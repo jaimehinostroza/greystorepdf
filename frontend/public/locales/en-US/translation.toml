@@ -731,7 +731,7 @@ permissionNotice = "The tessdata path is not writable. Downloads will be opened 
 
 [admin.settings.ai]
 customProvider = "Custom (OpenAI-compatible)"
-description = "Connect Stirling to the Python AI engine, choose its models, and set the guardrails it runs under."
+description = "Connect GreyStore PDF to the Python AI engine, choose its models, and set the guardrails it runs under."
 managedByCloud = "Managed by Stirling Cloud in this mode."
 managedByCloudShort = "Managed by Stirling Cloud"
 
@@ -792,7 +792,7 @@ help = "Off means document questions are unavailable. It does not stop text bein
 label = "Let Stirling Cloud keep indexed documents"
 
 [admin.settings.ai.general.cloudNote]
-body = "The reasoning runs on Stirling's infrastructure, billed to the account this server is linked to. There is no container to run and no provider key to hold here. Whatever the AI reads is processed by Stirling Cloud rather than on your own hardware."
+body = "The reasoning runs on GreyStore PDF's infrastructure, billed to the account this server is linked to. There is no container to run and no provider key to hold here. Whatever the AI reads is processed by Stirling Cloud rather than on your own hardware."
 title = "About Stirling Cloud AI"
 
 [admin.settings.ai.general.enabled]
@@ -832,9 +832,9 @@ label = "Where AI runs"
 
 [admin.settings.ai.general.mode.cloud]
 description = "No container, no provider key, no model choice - the work runs on Stirling Cloud and is billed to the account this server is linked to."
-linkCta = "Connect this server to a Stirling account"
+linkCta = "Connect this server to a GreyStore PDF account"
 notLinked = "Link an account first"
-ownerOnly = "Only the organization owner can link this server to a Stirling account."
+ownerOnly = "Only the organization owner can link this server to a GreyStore PDF account."
 title = "Use Stirling Cloud AI"
 
 [admin.settings.ai.general.mode.off]
@@ -847,7 +847,7 @@ title = "Run your own engine"
 
 [admin.settings.ai.general.note]
 docs = "Set-up guide"
-intro = "A separate container you run next to Stirling. It does the reasoning; Stirling still does every page operation itself. It needs the same"
+intro = "A separate container you run next to GreyStore PDF. It does the reasoning; GreyStore PDF still does every page operation itself. It needs the same"
 outro = "on both containers and a model provider key. Whatever the AI reads is sent to the provider you pick - an Ollama you host keeps every page in-house."
 title = "About the AI engine"
 
@@ -1118,7 +1118,7 @@ confirmCodeLabel = "Enter the confirmation code to proceed"
 confirmImport = "Confirm import"
 confirmImportTitle = "Confirm database import"
 connection = "Connection"
-connectionDescription = "Point Stirling at an external database instead of the embedded one."
+connectionDescription = "Point GreyStore PDF at an external database instead of the embedded one."
 createBackup = "Create backup"
 created = "Created"
 delete = "Delete"
@@ -1219,11 +1219,11 @@ description = "Configure optional features and functionality."
 title = "Features"
 
 [admin.settings.features.serverCertificate]
-description = "Generate the certificate that backs the \"Sign with Stirling-PDF\" signing feature."
+description = "Generate the certificate that backs the \"Sign with GreyStore PDF\" signing feature."
 label = "Certificate Signing"
 
 [admin.settings.features.serverCertificate.enabled]
-description = "Offer \"Sign with Stirling-PDF\" using a certificate this server generates"
+description = "Offer \"Sign with GreyStore PDF\" using a certificate this server generates"
 label = "Enable Certificate Signing"
 
 [admin.settings.features.serverCertificate.organizationName]
@@ -1240,7 +1240,7 @@ label = "Certificate Validity (days)"
 
 [admin.settings.folderAccess]
 description = "Directories that folder sources and folder outputs are allowed to read from and write to. This is a security boundary: automations can never be pointed at a server path outside this list."
-securityNote = "Leave this empty to disable folder sources and outputs entirely. Stirling's own configuration directory, server file storage and the pipeline watched folders are always off-limits, and folder access is always disabled in hosted (SaaS) mode."
+securityNote = "Leave this empty to disable folder sources and outputs entirely. GreyStore PDF's own configuration directory, server file storage and the pipeline watched folders are always off-limits, and folder access is always disabled in hosted (SaaS) mode."
 title = "Folder Access"
 
 [admin.settings.folderAccess.roots]
@@ -1379,7 +1379,7 @@ description = "URL or filename to cookie policy"
 label = "Cookie Policy"
 
 [admin.settings.legal.disclaimer]
-message = "By customizing these legal documents, you assume full responsibility for ensuring compliance with all applicable laws and regulations, including but not limited to GDPR and other EU data protection requirements. Only modify these settings if: (1) you are operating a personal/private instance, (2) you are outside EU jurisdiction and understand your local legal obligations, or (3) you have obtained proper legal counsel and accept sole responsibility for all user data and legal compliance. Stirling-PDF and its developers assume no liability for your legal obligations."
+message = "By customizing these legal documents, you assume full responsibility for ensuring compliance with all applicable laws and regulations, including but not limited to GDPR and other EU data protection requirements. Only modify these settings if: (1) you are operating a personal/private instance, (2) you are outside EU jurisdiction and understand your local legal obligations, or (3) you have obtained proper legal counsel and accept sole responsibility for all user data and legal compliance. GreyStore PDF and its developers assume no liability for your legal obligations."
 title = "Legal Responsibility Warning"
 
 [admin.settings.legal.impressum]
@@ -1467,8 +1467,8 @@ description = "Username for SMTP authentication"
 label = "SMTP Username"
 
 [admin.settings.mcp]
-apikeyNote = "Clients send a Stirling API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
-description = "Expose Stirling's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
+apikeyNote = "Clients send a GreyStore PDF API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning GreyStore PDF user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
+description = "Expose GreyStore PDF's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
 title = "MCP Server"
 
 [admin.settings.mcp.acceptedAudiences]
@@ -1498,7 +1498,7 @@ step3ApiKeyb = "header (or Authorization: Bearer <key>). No OAuth or metadata di
 step4 = "Approve the sign-in; the client retries with a token. Tools appear grouped: convert, pages, misc, security, ai."
 step4ApiKey = "Tools appear grouped: convert, pages, misc, security, ai - and every call is audited as the key's owner."
 tip = "Tip: register the resource ID as an allowed audience in your IdP. Tested with MCP Inspector and Claude Desktop."
-tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning Stirling user."
+tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning GreyStore PDF user."
 title = "Connect an MCP client"
 
 [admin.settings.mcp.issuerUri]
@@ -1511,14 +1511,14 @@ label = "JWKS URL (optional)"
 placeholder = "Auto-discovered from issuer"
 
 [admin.settings.mcp.mode]
-apikey = "API key (Stirling per-user key)"
-description = "OAuth needs an external IdP. API key uses a Stirling per-user API key (X-API-KEY) - simplest for self-host."
+apikey = "API key (GreyStore PDF per-user key)"
+description = "OAuth needs an external IdP. API key uses a GreyStore PDF per-user API key (X-API-KEY) - simplest for self-host."
 label = "Authentication mode"
 oauth = "OAuth 2.1 (external IdP)"
 
 [admin.settings.mcp.requireAccount]
-description = "Only let tokens through if their subject maps to a provisioned, enabled Stirling user."
-label = "Require an existing Stirling account"
+description = "Only let tokens through if their subject maps to a provisioned, enabled GreyStore PDF user."
+label = "Require an existing GreyStore PDF account"
 
 [admin.settings.mcp.resourceId]
 description = "This server's public /mcp URL. Tokens must list it in their audience (RFC 8707) or they are rejected."
@@ -1529,7 +1529,7 @@ description = "Require mcp.tools.read for read ops and mcp.tools.write for write
 label = "Enforce OAuth scopes"
 
 [admin.settings.mcp.usernameClaim]
-description = "JWT claim matched against a Stirling username (e.g. sub, email, preferred_username)."
+description = "JWT claim matched against a GreyStore PDF username (e.g. sub, email, preferred_username)."
 label = "Username claim"
 
 [admin.settings.plan.noData]
@@ -1854,7 +1854,7 @@ description = "When enabled, only listed user IDs can use the bot."
 label = "Allow Specific User IDs"
 
 [admin.settings.telegram.enabled]
-description = "Allow users to interact with Stirling PDF through your configured Telegram bot."
+description = "Allow users to interact with GreyStore PDF through your configured Telegram bot."
 label = "Enable Telegram Bot"
 
 [admin.settings.telegram.feedback]
@@ -1927,7 +1927,7 @@ settingsOverview = "This is the <strong>Settings Panel</strong>. Admin settings 
 systemCustomization = "We have extensive ways to customize the UI: <strong>System Settings</strong> let you change the app name and languages, <strong>Features</strong> allows server certificate management, and <strong>Endpoints</strong> lets you enable or disable specific tools for your users."
 teamsAndUsers = "Manage <strong>Teams</strong> and individual users here. You can invite new users via email, shareable links, or create custom accounts for them yourself."
 welcome = "Welcome to the <strong>Admin Tour</strong>! Let's explore the powerful enterprise features and settings available to system administrators."
-wrapUp = "That's the admin tour! You've seen the enterprise features that make Stirling PDF a powerful, customizable solution for organizations. You can replay it anytime - just open <strong>Settings</strong> and find it here in the <strong>Tours</strong> section under Help."
+wrapUp = "That's the admin tour! You've seen the enterprise features that make GreyStore PDF a powerful, customizable solution for organizations. You can replay it anytime - just open <strong>Settings</strong> and find it here in the <strong>Tours</strong> section under Help."
 
 [adminUserSettings]
 admin = "Admin"
@@ -1943,9 +1943,9 @@ thai = "Thai"
 
 [analytics]
 learnMore = "Learn more about our analytics"
-paragraph1 = "Stirling PDF has opt-in analytics to help us improve the product. We do not track any personal information or file contents."
-paragraph2 = "Please consider enabling analytics to help Stirling-PDF grow and to allow us to understand our users better."
-title = "Do you want to help make Stirling PDF better?"
+paragraph1 = "GreyStore PDF has opt-in analytics to help us improve the product. We do not track any personal information or file contents."
+paragraph2 = "Please consider enabling analytics to help GreyStore PDF grow and to allow us to understand our users better."
+title = "Do you want to help make GreyStore PDF better?"
 
 [annotate]
 tags = "annotate,highlight,draw,markup,comment,notes,review,redline,feedback,markup tools,sticky notes,shapes,arrows,text box,freehand"
@@ -2894,9 +2894,9 @@ typeSignature = "Type your name to create a signature"
 uploadCert = "Upload a certificate"
 uploadCertDesc = "Use your own PKCS12, PFX, PEM or JKS certificate."
 uploadSignature = "Upload your signature image"
-usePersonalCert = "Stirling Sign · Personal"
+usePersonalCert = "GreyStore PDF Sign · Personal"
 usePersonalCertDesc = "Sign with the certificate created for your account."
-useServerCert = "Stirling Sign · Organization"
+useServerCert = "GreyStore PDF Sign · Organization"
 useServerCertDesc = "Sign with this server's shared organization certificate."
 useSignature = "Use signature"
 
@@ -3215,8 +3215,8 @@ copy = "Copy message"
 
 [chat.dock]
 collapse = "Collapse chat"
-placeholder = "Ask Stirling Agent"
-title = "Stirling Agent"
+placeholder = "Ask GreyStore PDF Agent"
+title = "GreyStore PDF Agent"
 
 [chat.header]
 clearChat = "Clear chat"
@@ -3569,9 +3569,9 @@ label = "Documents by type: {{summary}}"
 noTypes = "These documents did not match a known type."
 
 [classificationDemo.defaultApp]
-body = "Make Stirling your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings."
-cta = "Make Stirling my default"
-title = "Open every PDF in Stirling"
+body = "Make GreyStore PDF your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings."
+cta = "Make GreyStore PDF my default"
+title = "Open every PDF in GreyStore PDF"
 
 [classificationDemo.followUp]
 background = "This runs in the background. The ring on the left shows progress."
@@ -3586,7 +3586,7 @@ other = "Other"
 body = "Classify and organise the {{count}} most recent PDFs in your Downloads folder by type."
 cta = "Process my Downloads folder"
 privacy = "Your PDFs stay on this device. Your connected server records processing usage."
-title = "See what Stirling can do with a whole folder"
+title = "See what GreyStore PDF can do with a whole folder"
 
 [classificationDemo.phase]
 finishing = "Finishing up..."
@@ -3600,10 +3600,10 @@ counts = "of {{total}} PDFs processed"
 [classificationDemo.results]
 documentCount_one = "{{count}} PDF"
 documentCount_other = "{{count}} PDFs"
-failedBody = "Stirling could not read your Downloads folder. Nothing on your computer was changed."
+failedBody = "GreyStore PDF could not read your Downloads folder. Nothing on your computer was changed."
 failedTitle = "That did not finish"
 heading = "Your Downloads, sorted"
-summary = "Stirling read {{documents}} and sorted them into {{types}}."
+summary = "GreyStore PDF read {{documents}} and sorted them into {{types}}."
 typeCount_one = "{{count}} type"
 typeCount_other = "{{count}} types"
 
@@ -3937,14 +3937,14 @@ upgradeButton = "Upgrade Account"
 
 [config.apiKeys]
 copyKeyAriaLabel = "Copy API key"
-description = "Your API key for accessing Stirling's suite of PDF tools. Copy it to your project or refresh to generate a new one."
-docsDescription = "Learn more about integrating with Stirling PDF:"
+description = "Your API key for accessing GreyStore PDF's suite of PDF tools. Copy it to your project or refresh to generate a new one."
+docsDescription = "Learn more about integrating with GreyStore PDF:"
 docsLink = "API Documentation"
 docsTitle = "API Documentation"
 generateError = "We couldn't generate your API key."
 goToAccount = "Go to Account"
 guestInfo = "Guest users do not receive API keys. Create an account to get an API key you can use in your applications."
-intro = "Use your API key to programmatically access Stirling PDF's processing capabilities."
+intro = "Use your API key to programmatically access GreyStore PDF's processing capabilities."
 label = "API Key"
 publicKeyAriaLabel = "Public API key"
 refreshAriaLabel = "Refresh API key"
@@ -3968,10 +3968,10 @@ title = "Refresh API Keys"
 warning = "⚠️ Warning: This action will generate new API keys and make your previous keys invalid."
 
 [config.mcp]
-description = "Model Context Protocol (MCP) lets AI assistants like Claude use your Stirling PDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
-guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run Stirling PDF tools on your behalf."
+description = "Model Context Protocol (MCP) lets AI assistants like Claude use your GreyStore PDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
+guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run GreyStore PDF tools on your behalf."
 navLabel = "MCP Server"
-tip = "Every action your assistant runs is performed as your account and counts toward your usage, just like using Stirling PDF directly."
+tip = "Every action your assistant runs is performed as your account and counts toward your usage, just like using GreyStore PDF directly."
 viewApiKeys = "View API keys"
 
 [config.mcp.copy]
@@ -3987,7 +3987,7 @@ label = "Your MCP endpoint"
 
 [config.mcp.setup]
 addTo = "Add to"
-hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your Stirling account on first use - no keys to copy."
+hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your GreyStore PDF account on first use - no keys to copy."
 title = "Connect your AI assistant"
 
 [config.overview]
@@ -4011,10 +4011,10 @@ step = "Step {{current}} of {{total}}"
 [connect.confirm]
 acknowledge = "I recognise this address and want to connect it to my team"
 approve = "Connect server"
-cannotDecide = "Only a team owner can approve or decline this connection. Use a different account or dismiss this prompt to continue using Stirling."
+cannotDecide = "Only a team owner can approve or decline this connection. Use a different account or dismiss this prompt to continue using GreyStore PDF."
 deny = "Decline"
 dismiss = "Dismiss"
-lead = "A Stirling server is asking to connect to your team. Check the address below is yours before you approve."
+lead = "A GreyStore PDF server is asking to connect to your team. Check the address below is yours before you approve."
 originLabel = "Address"
 signedInAs = "Signed in as"
 switchAccount = "Use a different account"
@@ -4178,7 +4178,7 @@ showPreferencesBtn = "Manage preferences"
 title = "How we use Cookies"
 
 [cookieBanner.popUp.description]
-1 = "We use cookies and other technologies to make Stirling PDF work better for you-helping us improve our tools and keep building features you'll love."
+1 = "We use cookies and other technologies to make GreyStore PDF work better for you-helping us improve our tools and keep building features you'll love."
 2 = "If you'd rather not, clicking 'No Thanks' will only enable the essential cookies needed to keep things running smoothly."
 
 [cookieBanner.preferencesModal]
@@ -4191,12 +4191,12 @@ subtitle = "Cookie Usage"
 title = "Consent Preferences Center"
 
 [cookieBanner.preferencesModal.analytics]
-description = "These cookies help us understand how our tools are being used, so we can focus on building the features our community values most. Rest assured-Stirling PDF cannot and will never track the content of the documents you work with."
+description = "These cookies help us understand how our tools are being used, so we can focus on building the features our community values most. Rest assured-GreyStore PDF cannot and will never track the content of the documents you work with."
 title = "Analytics"
 
 [cookieBanner.preferencesModal.description]
-1 = "Stirling PDF uses cookies and similar technologies to enhance your experience and understand how our tools are used. This helps us improve performance, develop the features you care about, and provide ongoing support to our users."
-2 = "Stirling PDF cannot-and will never-track or access the content of the documents you use."
+1 = "GreyStore PDF uses cookies and similar technologies to enhance your experience and understand how our tools are used. This helps us improve performance, develop the features you care about, and provide ongoing support to our users."
+2 = "GreyStore PDF cannot-and will never-track or access the content of the documents you use."
 3 = "Your privacy and trust are at the core of what we do."
 
 [cookieBanner.preferencesModal.necessary]
@@ -4305,11 +4305,11 @@ message = "Failed to set default PDF handler"
 title = "Error"
 
 [defaultApp.settingsOpened]
-message = "In Windows Settings, search for 'PDF' and select Stirling PDF as your default app"
+message = "In Windows Settings, search for 'PDF' and select GreyStore PDF as your default app"
 title = "Settings Opened"
 
 [defaultApp.success]
-message = "Stirling PDF is now your default PDF editor"
+message = "GreyStore PDF is now your default PDF editor"
 title = "Default App Set"
 
 [desktop.fileSave]
@@ -4326,7 +4326,7 @@ minimize = "Minimize"
 restore = "Restore"
 
 [desktopBilling]
-description = "Manage usage and billing in your browser. Sign in with the same Stirling account you use here."
+description = "Manage usage and billing in your browser. Sign in with the same GreyStore PDF account you use here."
 open = "Open Usage & Billing in browser"
 openFailed = "Could not open Usage & Billing. Check your connection and try again."
 selfHostedDescription = "Manage usage and billing on your connected server in your browser. Sign in with your server owner account."
@@ -4378,7 +4378,7 @@ updateFailedMessage = "Failed to download or install the update."
 
 [desktopUpdate.blocked]
 docsLink = "View installation documentation"
-message = "Stirling-PDF does not have permission to update itself on this machine."
+message = "GreyStore PDF does not have permission to update itself on this machine."
 title = "Administrator permissions required"
 
 [devAirgapped]
@@ -4834,13 +4834,13 @@ save = "Rename"
 title = "Rename file"
 
 [filesPage]
-addedToLibrary = "Added to Stirling library"
-addingToLibrary = "Adding to Stirling library…"
-addToLibrary = "Add to Stirling library…"
+addedToLibrary = "Added to GreyStore PDF library"
+addingToLibrary = "Adding to GreyStore PDF library…"
+addToLibrary = "Add to GreyStore PDF library…"
 addToLibraryFailed = "Some files could not be added"
 addToWorkspace = "Add to workspace"
 addToWorkspaceCount = "Add {{count}} to workspace"
-allFiles = "Stirling library"
+allFiles = "GreyStore PDF library"
 back = "Back"
 backToFolder = "Back to {{folder}}"
 backToMyFiles = "Back to File library"
@@ -4868,7 +4868,7 @@ deleteFolderContents_one = "Also delete {{count}} file inside the folder"
 deleteFolderContents_other = "Also delete {{count}} files inside the folder"
 deleteFolderContentsWarning = "Files will be permanently removed and cannot be recovered."
 deleteFolderError = "Could not delete the folder. Try again."
-deleteFolderKeepHint = "Files inside will be moved to Stirling library."
+deleteFolderKeepHint = "Files inside will be moved to GreyStore PDF library."
 deleteFolderTitle = "Delete folder?"
 deselectAll = "Clear selection"
 details = "Details"
@@ -4906,7 +4906,7 @@ moveSkippedRemote_other = "{{count}} files couldn't be moved on the server (no p
 moveTo = "Move to…"
 newFolder = "New folder"
 newFolderStorageDisabled = "Server folder storage isn't enabled."
-newFolderTabUnavailable = "Switch to Stirling library to create folders."
+newFolderTabUnavailable = "Switch to GreyStore PDF library to create folders."
 offlineNoFolderEdits = "Server folder sync unavailable - folder changes are disabled. Check sign-in and storage configuration."
 open = "Open"
 openVersionInWorkspace = "Open in workspace"
@@ -4915,7 +4915,7 @@ recentFiles = "Recents"
 refresh = "Refresh"
 refreshNeedsConnection = "Sign in to refresh from the server."
 remove = "Delete"
-removeLocalFolder = "Unmount from Stirling"
+removeLocalFolder = "Unmount from GreyStore PDF"
 removeVersion = "Remove this version"
 rename = "Rename"
 renamed = "Renamed"
@@ -4937,7 +4937,7 @@ summary_other = "{{count}} items"
 tree = "Folders"
 unmount = "Unmount"
 unmountFolderBody = "Unmount \"{{name}}\"? The folder and its files stay on your disk."
-unmountFolderTitle = "Unmount from Stirling?"
+unmountFolderTitle = "Unmount from GreyStore PDF?"
 upload = "Upload"
 uploadFromMobile = "Upload from Mobile"
 versionActions = "Version actions"
@@ -4980,7 +4980,7 @@ orphaned = "Not on disk"
 orphanedHint = "The original at {{path}} is gone. This copy is only here - saving it will ask for a new location."
 unavailable = "Unavailable"
 unavailableHintOffline = "The drive or share this file lives on is not connected. Reconnect it to pick up changes again."
-unavailableHintPermission = "Stirling is not allowed to read this location. Grant access in System Settings to pick up changes again."
+unavailableHintPermission = "GreyStore PDF is not allowed to read this location. Grant access in System Settings to pick up changes again."
 unavailableHintUnknown = "This file cannot be reached right now. The copy here is unchanged."
 
 [filesPage.diskState]
@@ -5095,7 +5095,7 @@ placeholder = "Folder name"
 
 [filesPage.folderOrigin]
 diskHint = "A folder mounted from a directory on your disk"
-serverHint = "A folder stored on the Stirling server"
+serverHint = "A folder stored on the GreyStore PDF server"
 virtualHint = "A folder that lives only in this browser"
 
 [filesPage.moveDialog]
@@ -5119,7 +5119,7 @@ serverHint = "Synced to your account, available wherever you sign in."
 [filesPage.origin]
 all = "All sources"
 cloud = "Cloud"
-cloudHint = "Stored on the Stirling server"
+cloudHint = "Stored on the GreyStore PDF server"
 diskFileHint = "Stored on your computer"
 diskHint = "A file in the mounted folder on your disk"
 local = "Local"
@@ -5288,8 +5288,11 @@ title = "What does 'Flatten only forms' mean?"
 title = "About Flattening PDFs"
 
 [footer]
+basedOn = "Based on Stirling-PDF (MIT)"
 discord = "Discord"
 issues = "GitHub"
+support = "Technical support: GreyStoreChile"
+whatsapp = "WhatsApp {{phone}}"
 
 [formFill]
 allSaved = "All saved"
@@ -5531,7 +5534,7 @@ invisible = "Invisible (metadata only)"
 location = "Location:"
 logo = "Logo:"
 logoHidden = "No logo"
-logoShown = "Stirling PDF logo shown"
+logoShown = "GreyStore PDF logo shown"
 participantCount_one = "{{count}} participant selected"
 participantCount_other = "{{count}} participants selected"
 participants = "Participants"
@@ -5582,7 +5585,7 @@ title = "Signing in Any Order"
 dismiss = "Dismiss banner"
 message = "Create a free account to save your work, access more features, and support the project."
 signUp = "Sign Up Free"
-title = "You're using Stirling PDF as a guest!"
+title = "You're using GreyStore PDF as a guest!"
 
 [home.addAttachments]
 desc = "View, add, extract, rename, or delete embedded PDF attachments"
@@ -5761,7 +5764,7 @@ tags = "combine,join,unite,merge,merge PDFs,combine PDFs,join PDFs,concatenate,a
 title = "Merge"
 
 [home.mobile]
-brandAlt = "Stirling PDF logo"
+brandAlt = "GreyStore PDF logo"
 openFiles = "Open files"
 swipeHint = "Swipe left or right to switch views"
 tools = "Tools"
@@ -5973,7 +5976,7 @@ passwordRequired = "Password is required"
 signIn = "Sign in"
 validating = "Validating invitation..."
 validationError = "Failed to validate invitation link"
-welcome = "Welcome to Stirling PDF"
+welcome = "Welcome to GreyStore PDF"
 welcomeSubtitle = "Complete your account setup to get started"
 welcomeTitle = "You've been invited!"
 
@@ -6261,7 +6264,7 @@ message = "Authentication was not successful. You can close this window and try 
 title = "Authentication Failed"
 
 [oauth.success]
-message = "You can close this window and return to Stirling PDF."
+message = "You can close this window and return to GreyStore PDF."
 title = "Authentication Successful"
 
 [oauthConsent]
@@ -6274,17 +6277,17 @@ loadFailed = "This authorization request is invalid or has expired. Close this t
 loading = "Loading authorization request..."
 missingId = "Missing authorization request. Start the connection from your app and try again."
 redirecting = "Returning you to the app..."
-requesting = "{{app}} wants to access your Stirling PDF account"
+requesting = "{{app}} wants to access your GreyStore PDF account"
 scopesIntro = "This will allow {{app}} to:"
 signedInAs = "Signed in as {{name}}"
 signInButton = "Sign in to continue"
-signInPrompt = "Sign in to your Stirling PDF account to continue connecting the app."
+signInPrompt = "Sign in to your GreyStore PDF account to continue connecting the app."
 title = "Authorize access"
 unknownApp = "A third-party application"
 
 [oauthConsent.access]
 actAsYou = "Act as you - everything {{app}} does runs under your account and counts towards your usage"
-tools = "Use your Stirling PDF tools on your behalf - convert, edit, sign, secure and process your documents"
+tools = "Use your GreyStore PDF tools on your behalf - convert, edit, sign, secure and process your documents"
 
 [oauthConsent.scope]
 email = "See your email address"
@@ -6414,26 +6417,26 @@ skipTheTour = "Skip the tour"
 
 [onboarding.checklist]
 dismiss = "Dismiss"
-title = "Set up Stirling PDF"
+title = "Set up GreyStore PDF"
 
 [onboarding.checklist.downloadDesktop]
-description = "Run Stirling natively on your machine"
-title = "Download Stirling for Desktop"
+description = "Run GreyStore PDF natively on your machine"
+title = "Download GreyStore PDF for Desktop"
 
 [onboarding.checklist.inviteTeam]
 description = "Collaborate with your team"
 title = "Invite team members"
 
 [onboarding.checklist.setDefaultApp]
-description = "Open PDF files in Stirling PDF"
-title = "Make Stirling your default"
+description = "Open PDF files in GreyStore PDF"
+title = "Make GreyStore PDF your default"
 
 [onboarding.checklist.takeTour]
-description = "See how Stirling works in a quick walkthrough"
+description = "See how GreyStore PDF works in a quick walkthrough"
 title = "Take the tour"
 
 [onboarding.desktopInstall]
-body = "Stirling works best as a desktop app. You can use it offline, access documents faster, and make edits locally on your computer."
+body = "GreyStore PDF works best as a desktop app. You can use it offline, access documents faster, and make edits locally on your computer."
 selectOs = "Select operating system"
 title = "Download"
 titleWithOs = "Download for {{osLabel}}"
@@ -6441,7 +6444,7 @@ titleWithOs = "Download for {{osLabel}}"
 [onboarding.desktopWelcome]
 body = "There's a whole host of new changes to explore, including <strong>Agent Chat</strong>, automatic document <strong>classification</strong>, and more."
 freeLine = "The editor is now <free>completely free</free>."
-title = "Welcome to Stirling <product>Desktop</product>"
+title = "Welcome to GreyStore PDF <product>Desktop</product>"
 
 [onboarding.mfa]
 authenticationCode = "Authentication code"
@@ -6462,21 +6465,21 @@ success = "MFA has been enabled. You can now continue."
 title = "Multi-Factor Authentication Setup"
 
 [onboarding.planOverview]
-adminBodyLoginDisabled = "Once you enable login mode, you can manage users, configure settings, and monitor server health. The first <strong>{{freeTierLimit}}</strong> people on your server get to use Stirling free of charge."
-adminBodyLoginEnabled = "As an admin, you can manage users, configure settings, and monitor server health. The first <strong>{{freeTierLimit}}</strong> people on your server get to use Stirling free of charge."
+adminBodyLoginDisabled = "Once you enable login mode, you can manage users, configure settings, and monitor server health. The first <strong>{{freeTierLimit}}</strong> people on your server get to use GreyStore PDF free of charge."
+adminBodyLoginEnabled = "As an admin, you can manage users, configure settings, and monitor server health. The first <strong>{{freeTierLimit}}</strong> people on your server get to use GreyStore PDF free of charge."
 adminTitle = "Admin Overview"
 userBody = "Invite teammates, assign roles, and keep your documents organized in one secure workspace. Enable login mode whenever you're ready to grow beyond solo use."
 userTitle = "Plan Overview"
 
 [onboarding.processorIntro]
-body = "Stirling now runs <strong>Policies</strong> — automated rules that classify, secure, and process every document as it arrives. Set them up and monitor runs in the <strong>Processor</strong>."
+body = "GreyStore PDF now runs <strong>Policies</strong> — automated rules that classify, secure, and process every document as it arrives. Set them up and monitor runs in the <strong>Processor</strong>."
 cta = "Check out the Processor"
-title = "Check out the Stirling Processor"
+title = "Check out the GreyStore PDF Processor"
 
 [onboarding.saas.freeEditor]
 freeLine = "The editor is now <free>completely free</free>."
 premium = "We've added loads of new features, including <strong>Policies</strong> and <strong>Agent Chat</strong>."
-title = "Welcome to Stirling"
+title = "Welcome to GreyStore PDF"
 
 [onboarding.saas.team]
 addButton = "Add"
@@ -6497,20 +6500,20 @@ roleUser = "User"
 title = "Security Check"
 
 [onboarding.serverLicense]
-freeBody = "Our <strong>Open-Core</strong> licensing includes <strong>OAuth SSO</strong> and up to <strong>{{freeTierLimit}}</strong> users for free. To scale uninterrupted, we recommend the Stirling Team plan - <strong>100 users</strong> for $99/mo."
+freeBody = "Our <strong>Open-Core</strong> licensing includes <strong>OAuth SSO</strong> and up to <strong>{{freeTierLimit}}</strong> users for free. To scale uninterrupted, we recommend the GreyStore PDF Team plan - <strong>100 users</strong> for $99/mo."
 freeTitle = "Team plan"
-overLimitBody = "Our licensing permits up to <strong>{{freeTierLimit}}</strong> users for free. You have <strong>{{overLimitUserCopy}}</strong> Stirling users. To continue uninterrupted, upgrade to the Stirling Team plan - <strong>100 users</strong>, PDF text editing, and full admin control for $99/mo."
+overLimitBody = "Our licensing permits up to <strong>{{freeTierLimit}}</strong> users for free. You have <strong>{{overLimitUserCopy}}</strong> GreyStore PDF users. To continue uninterrupted, upgrade to the GreyStore PDF Team plan - <strong>100 users</strong>, PDF text editing, and full admin control for $99/mo."
 overLimitTitle = "Team plan needed"
 seePlans = "See Plans →"
 upgrade = "Upgrade now →"
 
 [onboarding.tourOverview]
-body = "Stirling PDF V2 ships with dozens of tools and a refreshed layout. Take a quick tour to see what changed and where to find the features you need."
+body = "GreyStore PDF V2 ships with dozens of tools and a refreshed layout. Take a quick tour to see what changed and where to find the features you need."
 title = "Tour Overview"
 
 [onboarding.welcomeSlide]
-body = "Stirling PDF is now ready for teams of all sizes. This update includes a new layout, powerful new admin capabilities, and our most requested feature - <strong>Edit Text</strong>."
-title = "Welcome to Stirling"
+body = "GreyStore PDF is now ready for teams of all sizes. This update includes a new layout, powerful new admin capabilities, and our most requested feature - <strong>Edit Text</strong>."
+title = "Welcome to GreyStore PDF"
 
 [onboarding.whatsNew]
 activeFilesView = "Use Active Files to see everything you have open and pick what to work on."
@@ -6597,7 +6600,7 @@ check = "Check again"
 checkAccount = "Check account"
 chooseEmail = "Choose their account in {{team}}, or enter an email to invite them."
 close = "Close transfer dialog"
-cloudAccount = "Stirling account"
+cloudAccount = "GreyStore PDF account"
 cloudScopeStyled = "<user>{{name}}</user> will manage {{team}}, its members and billing."
 cloudTargetChanged = "Choose another cloud member. This account is no longer eligible for the handover."
 confirm = "I understand the access and ownership changes."
@@ -6612,7 +6615,7 @@ inviteAddress = "Invite <account>{{email}}</account> to {{team}}."
 inviteBlocked = "The invitation could not be sent. Check available team seats and whether the recipient already has a paid subscription."
 linkChanged = "The server's cloud link changed. Ask the server operator to restore the original link before resuming."
 linkedServerCount = "{{count}} linked servers"
-linkRevoked = "This server's cloud link is no longer valid. Cancel the transfer, then reconnect your Stirling account in settings. Ownership will not change."
+linkRevoked = "This server's cloud link is no longer valid. Cancel the transfer, then reconnect your GreyStore PDF account in settings. Ownership will not change."
 localScope = "They will own this server and manage billing and cloud connections. You keep administrator access, but lose access to those settings."
 membershipDetails = "Team membership details"
 membershipFirst = "They must join the team before you can confirm the transfer."
@@ -6940,7 +6943,7 @@ benefit1Body = "chain tools, schedule runs, batch process"
 benefit1Title = "Automation pipelines"
 benefit2Body = "summarize, classify, redact, AI-OCR"
 benefit2Title = "AI tools"
-benefit3Body = "call any Stirling endpoint programmatically"
+benefit3Body = "call any GreyStore PDF endpoint programmatically"
 benefit3Title = "API access"
 button = "Turn on Processor →"
 reassurance = "No minimum · Set a $0 cap to test · Cancel anytime"
@@ -7030,7 +7033,7 @@ editorLabel = "PDF Editor"
 login = "Log in"
 manualToolsPromo = "Unlimited free manual PDF tools"
 processorLabel = "PDF Processor"
-processorTitle = "Create an account to unlock the best of Stirling"
+processorTitle = "Create an account to unlock the best of GreyStore PDF"
 readerLabel = "PDF Reader"
 
 [payg.spendCapMeter]
@@ -7070,7 +7073,7 @@ usdNote = "Estimated in USD. You can adjust your cap any time after subscribing,
 [payg.upgrade.checkout]
 capValue = "{{symbol}}{{amount}} / month"
 edit = "Edit"
-help = "Stripe handles your card details. Stirling never sees them."
+help = "Stripe handles your card details. GreyStore PDF never sees them."
 loading = "Loading checkout…"
 noCap = "No cap"
 title = "Add your payment method"
@@ -7078,7 +7081,7 @@ title = "Add your payment method"
 [payg.upgrade.help]
 aiBody = "summarize, classify, redact, AI-OCR"
 aiTitle = "AI tools"
-apiBody = "programmatic access to any Stirling endpoint"
+apiBody = "programmatic access to any GreyStore PDF endpoint"
 apiTitle = "API calls"
 automationBody = "chained tools or scheduled runs that don't need clicks"
 automationTitle = "Automation pipelines"
@@ -7939,7 +7942,7 @@ connectDescription = "Connect this server to use your team’s processing allowa
 disconnectBody = "This server will stop using your team’s processing allowance in Stirling Cloud. Your local files stay on this server. To connect again, follow the original connection steps."
 disconnectTitle = "Disconnect this instance?"
 eyebrow = "This instance"
-linkButton = "Connect your Stirling account"
+linkButton = "Connect your GreyStore PDF account"
 loading = "Checking account connection"
 notLinked = "Not connected"
 signedInAs = "Signed in to Stirling Cloud as"
@@ -7955,14 +7958,14 @@ description = "Ask your server administrator to enable the connection to Stirlin
 title = "Account connection unavailable"
 
 [portal.accountLink.connect]
-adminRequired = "Ask your server administrator to open Usage & billing and link a Stirling account for more monthly credits. Manual PDF tools are still available."
+adminRequired = "Ask your server administrator to open Usage & billing and link a GreyStore PDF account for more monthly credits. Manual PDF tools are still available."
 adminTitle = "Ask your server administrator"
 close = "Close"
 copied = "Copied"
 copyAdminMessage = "Copy message for administrator"
-exhaustedLede = "This server has used its free credits for the month. Link a new or existing Stirling account to access your team’s monthly allowance."
+exhaustedLede = "This server has used its free credits for the month. Link a new or existing GreyStore PDF account to access your team’s monthly allowance."
 notNow = "Not now"
-start = "Connect Stirling account"
+start = "Connect GreyStore PDF account"
 step = "Step {{current}} of {{total}}"
 
 [portal.accountLink.connect.benefits]
@@ -7976,9 +7979,9 @@ teamsDetail = "Add more users with a paid Team plan"
 teamsLabel = "Larger teams"
 
 [portal.accountLink.connect.callback]
-linkedNotSignedIn = "You are not signed in to Stirling in this browser, so usage and billing will ask you to sign in."
+linkedNotSignedIn = "You are not signed in to GreyStore PDF in this browser, so usage and billing will ask you to sign in."
 retry = "Try again"
-signedInAnyway = "You are signed in to Stirling, so billing and usage will load. Only the server link is incomplete."
+signedInAnyway = "You are signed in to GreyStore PDF, so billing and usage will load. Only the server link is incomplete."
 working = "Finishing the connection."
 
 [portal.accountLink.connect.callback.expired]
@@ -7994,7 +7997,7 @@ body = "This request was declined or has already been used. Start another one if
 title = "Connection not completed"
 
 [portal.accountLink.connect.callback.unfinished]
-body = "Stirling did not confirm the connection. This is usually temporary."
+body = "GreyStore PDF did not confirm the connection. This is usually temporary."
 title = "Not finished yet"
 
 [portal.accountLink.connect.done]
@@ -8005,14 +8008,14 @@ creditsBarLabel = "Free credits remaining"
 creditsSuffix = "of {{allowance}} free credits left"
 cta = "Done"
 inviteTeam = "Invite your team"
-lede = "This server now runs against your Stirling account."
+lede = "This server now runs against your GreyStore PDF account."
 pendingTitle = "Almost there"
 switchOnProcessor = "Switch on the Processor"
 title = "Connected"
 
 [portal.accountLink.connect.handoff]
-opening = "Opening Stirling sign-in..."
-reauthLede = "Your Stirling session expired. Signing in again keeps usage and billing visible. This server stays connected either way."
+opening = "Opening GreyStore PDF sign-in..."
+reauthLede = "Your GreyStore PDF session expired. Signing in again keeps usage and billing visible. This server stays connected either way."
 title = "Connecting"
 
 [portal.accountLink.connectionNotice]
@@ -8050,17 +8053,17 @@ callbackMismatch = "This server's configured frontend address does not match the
 cancel = "Cancel"
 continueReauth = "Sign in again"
 exhaustedTitle = "Keep your workflows running"
-identity = "Stirling account"
-linkTitle = "Connect your Stirling account"
-noAuthorizeUrl = "Stirling did not return somewhere to continue. Try again in a moment."
-startFailed = "Could not reach Stirling to start the connection. Check this server's outbound network access, then try again."
+identity = "GreyStore PDF account"
+linkTitle = "Connect your GreyStore PDF account"
+noAuthorizeUrl = "GreyStore PDF did not return somewhere to continue. Try again in a moment."
+startFailed = "Could not reach GreyStore PDF to start the connection. Check this server's outbound network access, then try again."
 transferPending = "An ownership transfer is pending. Go to Settings → Users to finish or cancel it, then try linking again."
 
 [portal.accountLink.modal.loginNotConfigured]
 after = "so this server can finish the connection when you come back."
 and = "and"
 before = "Set"
-title = "Stirling connection not configured"
+title = "GreyStore PDF connection not configured"
 
 [portal.accountLink.notice]
 loadFailed = "The account linking dialog could not be loaded."
@@ -8097,7 +8100,7 @@ viewAll = "View all pipelines"
 
 [portal.accountLink.rail]
 adminCta = "How to get more credits"
-adminSub = "Ask your server administrator to link a Stirling account for more credits. Manual PDF tools are still available."
+adminSub = "Ask your server administrator to link a GreyStore PDF account for more credits. Manual PDF tools are still available."
 exhaustedCta = "Link account for more credits"
 exhaustedSub = "Link for monthly credits, shared billing and the option to grow with a Team plan."
 exhaustedTitle = "This server’s free credits are used up"
@@ -8111,9 +8114,9 @@ malformed = "We could not verify this sign-in response. Start again from Usage &
 malformedTitle = "Could not verify sign-in"
 rejected = "This sign-in request was declined or has already been used. Try again to renew billing access."
 rejectedTitle = "Sign-in not completed"
-retry = "Stirling could not finish renewing billing access. Try again in a moment; your server is still connected."
+retry = "GreyStore PDF could not finish renewing billing access. Try again in a moment; your server is still connected."
 retryTitle = "Billing access not restored"
-success = "Your billing access has been renewed. This server is still connected to the same Stirling account."
+success = "Your billing access has been renewed. This server is still connected to the same GreyStore PDF account."
 title = "Renew billing access"
 working = "Restoring billing access."
 
@@ -8127,7 +8130,7 @@ close = "Close assistant"
 error = "Couldn't reach the assistant."
 errorWithDetail = "Couldn't reach the assistant: {{detail}}"
 inputAriaLabel = "Ask the assistant"
-inputPlaceholder = "Ask about Stirling…"
+inputPlaceholder = "Ask about GreyStore PDF…"
 open = "Open assistant"
 send = "Send"
 title = "Assistant"
@@ -8172,7 +8175,7 @@ title = "Set your spend limit"
 [portal.billing.checkout.card]
 fields = "Card number · MM / YY · CVC · ZIP"
 label = "Card details"
-note = "Card details collected by Stripe. Stirling never stores PAN or CVC."
+note = "Card details collected by Stripe. GreyStore PDF never stores PAN or CVC."
 
 [portal.billing.checkout.error]
 title = "Couldn't start checkout"
@@ -8256,7 +8259,7 @@ pdfsUsed_one = "{{count}} PDF processed"
 pdfsUsed_other = "{{count}} PDFs processed"
 period = "Agreement period: {{start}} – {{end}}"
 sub = "Air-gapped deployment, SCIM, data residency, uptime SLAs, and an agreement to match."
-title = "Running Stirling in a regulated environment?"
+title = "Running GreyStore PDF in a regulated environment?"
 trial = "{{days}}-day trial · ends {{date}}"
 usersAgreed = "{{used}} / {{agreed}} agreed users"
 usersOver_one = "{{count}} user over agreed quantity"
@@ -8548,7 +8551,7 @@ description = "Where processed documents end up - a bucket, a drive, a ticket or
 label = "File & attach"
 
 [portal.connections.commonFields.accessToken]
-helperText = "Stirling stores this encrypted and never shows it again."
+helperText = "GreyStore PDF stores this encrypted and never shows it again."
 label = "Access token"
 
 [portal.connections.commonFields.apiKey]
@@ -9092,7 +9095,7 @@ retry = "Try again"
 title = "Something went wrong on this page"
 
 [portal.failures]
-closedBySystem = "Stirling"
+closedBySystem = "GreyStore PDF"
 noMatches = "Nothing matches the current filters"
 occurrences = "{{count}} occurrences"
 searchPlaceholder = "Search issues, users and errors"
@@ -9196,7 +9199,7 @@ description = "This server is missing software the step needs, so the run could 
 title = "Software not installed"
 
 [portal.failures.kind.unknown]
-description = "Something went wrong that Stirling does not recognise yet."
+description = "Something went wrong that GreyStore PDF does not recognise yet."
 title = "Unrecognised issue"
 
 [portal.failures.log]
@@ -9234,7 +9237,7 @@ guide = "Open the {{name}} guide"
 openInBrowser = "Open in browser instead"
 sectionDesktop = "Desktop app"
 sectionSelfHosted = "Self-hosted"
-title = "Install the Stirling PDF Editor"
+title = "Install the GreyStore PDF Editor"
 
 [portal.home.download.docker]
 detailBody = "Run the official image on your server."
@@ -9316,7 +9319,7 @@ usageMonth = "Usage this month"
 usageToday = "Usage today"
 
 [portal.infrastructure.apiKeys.empty]
-description = "Create a key to start calling the Stirling API."
+description = "Create a key to start calling the GreyStore PDF API."
 title = "No API keys yet"
 
 [portal.infrastructure.apiKeys.error]
@@ -9406,7 +9409,7 @@ done = "Done"
 keyNameLabel = "Key name"
 keyNamePlaceholder = "e.g. Production ingest"
 secretKeyCaption = "Secret key"
-secretWarning = "Store this in a secrets manager. Stirling only ever stores a hash, so there is no way to recover it later."
+secretWarning = "Store this in a secrets manager. GreyStore PDF only ever stores a hash, so there is no way to recover it later."
 subtitle = "Give the key a name so you can recognise it later. You can revoke it at any time."
 subtitleCreated = "Copy this secret now — it won't be shown again."
 title = "Create API key"
@@ -9590,7 +9593,7 @@ connectionCount_one = "{{count}} connection"
 connectionCount_other = "{{count}} connections"
 customApi = "Custom API"
 searchPlaceholder = "Search integrations"
-subtitle = "Everything Stirling can talk to. Credentials are created once here, then referenced by sources, policies and pipelines."
+subtitle = "Everything GreyStore PDF can talk to. Credentials are created once here, then referenced by sources, policies and pipelines."
 title = "Integrations"
 typedName = "{{tool}} name"
 
@@ -10275,8 +10278,8 @@ saveFailed = "Couldn't save the pipeline. Please try again."
 
 [portal.policies.wizard.locations]
 aiSettings = "Open AI settings"
-builtin = "Stirling knowledge base"
-builtinHelp = "Indexes searchable chunks in Stirling and returns the processed PDF to the destination below. An embedding provider must be configured in AI settings."
+builtin = "GreyStore PDF knowledge base"
+builtinHelp = "Indexes searchable chunks in GreyStore PDF and returns the processed PDF to the destination below. An embedding provider must be configured in AI settings."
 checking = "Checking ingestion availability..."
 chooseOutput = "Choose an enabled output destination before saving."
 chooseSource = "Choose where documents come from"
@@ -10368,7 +10371,7 @@ title = "No flow yet"
 
 [portal.processorFlow.sources]
 comingSoonTag = "Connect"
-editor = "Stirling PDF Editor"
+editor = "GreyStore PDF Editor"
 heading = "Sources"
 perDay = "{{n}} / 24h"
 
@@ -10385,7 +10388,7 @@ title = "Procurement"
 agreeCta = "Sign agreement"
 confidential = "Confidential"
 confirm = "I have read and agree to this Agreement, and I represent that I am authorized to sign it on behalf of the organization named above."
-docName = "Stirling Enterprise Agreement"
+docName = "GreyStore PDF Enterprise Agreement"
 docSub = "MSA, Order Form, EULA and DPA, combined into one signature."
 download = "Download"
 downloadDraftError = "Could not generate the agreement PDF - the document renderer is unavailable. Please try again shortly or contact support."
@@ -10421,7 +10424,7 @@ contactName = "Contact name"
 contactNamePlaceholder = "Jane Doe"
 continue = "Continue"
 done = "Done"
-eula = "I have read and agree to the Stirling Enterprise EULA. It governs the agreement generated from this quote."
+eula = "I have read and agree to the GreyStore PDF Enterprise EULA. It governs the agreement generated from this quote."
 generate = "Generate quote"
 indemnification = "Enhanced IP Protection"
 indemnificationSub = "Extends our IP defense to patent claims. Baseline copyright, trademark and trade-secret indemnification is included free."
@@ -10519,7 +10522,7 @@ eyebrowCompany = "{{company}} Enterprise"
 inviteTeammates = "Invite teammates"
 licenseKey = "Licence key"
 liveSub = "Your organization is provisioned and your licence is active."
-liveTitle = "You are live on Stirling Enterprise"
+liveTitle = "You are live on GreyStore PDF Enterprise"
 next = "Next: {{stage}}"
 open = "Open procurement"
 scheduleCall = "Schedule a call"
@@ -10555,7 +10558,7 @@ gatingAction = "Accept your quote"
 label = "Quote"
 
 [portal.procurement.journeySteps.trial]
-blurb = "Evaluate Stirling against your documents and workflows."
+blurb = "Evaluate GreyStore PDF against your documents and workflows."
 gatingAction = "Build your quote"
 label = "Trial"
 
@@ -10572,14 +10575,14 @@ trialFileHint = "This is your trial licence file. Once your agreement is in plac
 
 [portal.procurement.link]
 cta = "Link account"
-description = "Procurement runs on your linked Stirling account: it's how we provision the trial, price your quote, and start billing. Link an account to start."
+description = "Procurement runs on your linked GreyStore PDF account: it's how we provision the trial, price your quote, and start billing. Link an account to start."
 eyebrow = "Enterprise"
 title = "Link your account to begin"
 
 [portal.procurement.live]
 description = "Your subscription is active and your licence is issued. Your team is provisioned and billing has started."
 eyebrow = "Live"
-title = "You're live on Stirling Enterprise"
+title = "You're live on GreyStore PDF Enterprise"
 
 [portal.procurement.milestone]
 downloadError = "Could not download the quote PDF just yet — please try again in a moment."
@@ -10618,7 +10621,7 @@ cloud = "Stirling Cloud"
 cloudSub = "Managed, fastest start"
 continue = "Continue"
 deployment = "Where should it deploy?"
-eula = "I agree to the Stirling EULA & Commercial Terms."
+eula = "I agree to the GreyStore PDF EULA & Commercial Terms."
 fullName = "Full name"
 fullNamePlaceholder = "Your name"
 invites = "Invite teammates · optional"
@@ -10657,7 +10660,7 @@ account-link = "Account connection"
 [portal.shell.sidebar]
 appEditor = "Editor"
 appProcessor = "Processor"
-linkAccount = "Link Stirling account"
+linkAccount = "Link GreyStore PDF account"
 primaryNav = "Primary navigation"
 
 [portal.shell.topbar]
@@ -10667,7 +10670,7 @@ search = "Search"
 
 [portal.sources]
 processingModeHelp = "Track keeps originals and processes each version once. Snapshot keeps originals and processes them on every run. Consume deletes originals after successful delivery."
-subtitle = "Reusable input connections that feed documents into Stirling. Configure a source once, then reference it from any number of pipelines."
+subtitle = "Reusable input connections that feed documents into GreyStore PDF. Configure a source once, then reference it from any number of pipelines."
 title = "Sources"
 
 [portal.sources.actions]
@@ -10860,7 +10863,7 @@ secretNote = "The signing secret is shown once, when the webhook is created. Rec
 copy = "Copy"
 done = "Done"
 secret = "Signing secret"
-secretHelp = "Sign each delivery's raw body with this key (HMAC-SHA256) and send it as the X-Stirling-Signature header."
+secretHelp = "Sign each delivery's raw body with this key (HMAC-SHA256) and send it as the X-GreyStore PDF-Signature header."
 secretWarning = "Copy the signing secret now. For your security it is shown only once and cannot be retrieved later."
 title = "Webhook created"
 url = "Delivery URL"
@@ -10888,15 +10891,15 @@ adminOnly = "This server's monthly credits are shared by everyone on it, so only
 barAria = "Free credits remaining"
 capSuffix_one = "of {{allowance}} free credit left this month"
 capSuffix_other = "of {{allowance}} free credits left this month"
-connect = "Connect a Stirling account"
+connect = "Connect a GreyStore PDF account"
 connectBody = "Connecting adds a second monthly allowance, raises the users this server can have, and turns on the Processor."
-connectTitle = "This server has no Stirling account"
+connectTitle = "This server has no GreyStore PDF account"
 loadError = "Couldn't read this server's credit usage. Try again in a moment."
 loadErrorTitle = "Couldn't load credit usage"
 resets = "Resets {{date}}"
 
 [portal.usage.sessionExpired]
-body = "Your Stirling account session has expired. Sign in again to view billing — your instance stays linked."
+body = "Your GreyStore PDF account session has expired. Sign in again to view billing — your instance stays linked."
 
 [portal.users]
 title = "Users"
@@ -11221,7 +11224,7 @@ files = "Files"
 account = "Account"
 docs = "Documentation"
 editor = "Editor"
-home = "Stirling"
+home = "GreyStore PDF"
 invite = "Invite"
 landmark = "Quick navigation"
 noProcessorAccess = "Ask an admin for processor access"
@@ -11646,7 +11649,7 @@ yd = "Yards (yd)"
 back = "Back"
 continue = "Continue"
 subtitle = "Choose where it runs."
-title = "Where do you want to run Stirling?"
+title = "Where do you want to run GreyStore PDF?"
 
 [runLocation.choice.browser]
 description = "The web app."
@@ -11838,8 +11841,8 @@ hideTools = "Hide unavailable tools ▴"
 messageNoFallback = "Tools are unavailable until your server comes back online."
 messageWithFallback = "Some tools require a server connection."
 showTools = "View unavailable tools ▾"
-title = "Your Stirling-PDF server is unreachable"
-toolNotAvailableLocally = "Your Stirling-PDF server is offline and \"{{endpoint}}\" is not available on the local backend."
+title = "Your GreyStore PDF server is unreachable"
+toolNotAvailableLocally = "Your GreyStore PDF server is offline and \"{{endpoint}}\" is not available on the local backend."
 
 [session]
 expired = "Your session has expired. Please refresh the page and try again."
@@ -11911,7 +11914,7 @@ unknown = "Not available"
 yourTeam = "Your team"
 
 [settings.connection]
-description = "Work locally on this machine or connect the app to a Stirling server."
+description = "Work locally on this machine or connect the app to a GreyStore PDF server."
 localDescription = "You are using the local backend without an account. Some tools requiring cloud processing or a self-hosted server are unavailable."
 logout = "Log Out"
 server = "Server"
@@ -11926,7 +11929,7 @@ selfhosted = "Self-Hosted"
 
 [settings.developer]
 apiKeys = "API Keys"
-apiKeysDescription = "Personal keys for calling the Stirling API from scripts and integrations."
+apiKeysDescription = "Personal keys for calling the GreyStore PDF API from scripts and integrations."
 title = "Developer"
 
 [settings.general]
@@ -11935,7 +11938,7 @@ autoUnzipFileLimit = "Auto-unzip file limit"
 autoUnzipFileLimitTooltip = "Only unzip if the ZIP contains this many files or fewer. Set higher to extract larger ZIPs."
 autoUnzipTooltip = "Automatically extract ZIP files returned from API operations. Disable to keep ZIP files intact. This does not affect automation workflows."
 defaultPdfEditor = "Default PDF editor"
-defaultPdfEditorActive = "Stirling PDF is your default PDF editor"
+defaultPdfEditorActive = "GreyStore PDF is your default PDF editor"
 defaultPdfEditorChecking = "Checking..."
 defaultPdfEditorInactive = "Another application is set as default"
 defaultPdfEditorSet = "Already Default"
@@ -12005,7 +12008,7 @@ updateBehavior = "Update behavior"
 updateBehaviorDescription = "Choose whether to prompt before installing updates, install them automatically, or skip update checks entirely."
 updateBehaviorError = "Could not change update behavior"
 updateBehaviorErrorLocked = "This setting is locked by your administrator."
-updateBehaviorLockedDescription = "Your administrator has configured how Stirling-PDF handles updates on this machine. Contact them to change this."
+updateBehaviorLockedDescription = "Your administrator has configured how GreyStore PDF handles updates on this machine. Contact them to change this."
 updateBehaviorSaved = "Update behavior saved."
 versionMismatch = "Your desktop application and server are running different versions. Update both to the same version to avoid compatibility issues."
 viewDetails = "View Details"
@@ -12231,7 +12234,7 @@ emptyUsername = "Please enter your username"
 oauthFailed = "OAuth login failed. Please try again."
 
 [setup.saas]
-title = "Sign in to Stirling"
+title = "Sign in to GreyStore PDF"
 
 [setup.selfhosted]
 changeServerLocked = "Your organization has restricted this app to a specific server"
@@ -12277,7 +12280,7 @@ step3 = "Restart the server"
 title = "Login Not Enabled"
 
 [setup.server.url]
-description = "Enter the full URL of your self-hosted Stirling PDF server"
+description = "Enter the full URL of your self-hosted GreyStore PDF server"
 label = "Server URL"
 
 [sharedSign]
@@ -12731,7 +12734,7 @@ pleaseFillAllFields = "Please fill in all fields"
 signUp = "Sign Up"
 signUpWith = "Sign up with"
 skip = "Skip"
-subtitle = "Join Stirling PDF to get started"
+subtitle = "Join GreyStore PDF to get started"
 title = "Create an account"
 unableToAccessTool = "Unable to access tool: {{error}}"
 unexpectedError = "Unexpected error: {{message}}"
@@ -13013,7 +13016,7 @@ download = "Download"
 downloaded = "Downloaded"
 downloadFailed = "Unable to download this file."
 downloadsCount = "Downloads: {{count}}"
-emailWarningBody = "This looks like an email address. If this person is not already a Stirling PDF user, they will not be able to access the file."
+emailWarningBody = "This looks like an email address. If this person is not already a GreyStore PDF user, they will not be able to access the file."
 emailWarningConfirm = "Share anyway"
 emailWarningTitle = "Email address"
 errorTitle = "Share failed"
@@ -13044,7 +13047,7 @@ manageTitle = "Manage Sharing"
 noActivity = "No activity yet."
 noLinks = "No active share links yet."
 noSharedUsers = "No users have access yet."
-openInApp = "Open in Stirling PDF"
+openInApp = "Open in GreyStore PDF"
 ownerLabel = "Owner"
 ownerUnknown = "Unknown"
 removeLink = "Remove link"
@@ -13102,7 +13105,7 @@ all = "All"
 ariaLabel = "Super search"
 filtersAriaLabel = "Search filters"
 hint = "Type to search"
-placeholder = "Search Stirling"
+placeholder = "Search GreyStore PDF"
 placeholderShort = "Search"
 showLess = "Show less"
 showMore = "Show {{count}} more"
@@ -13116,7 +13119,7 @@ settings = "Settings"
 tools = "Tools"
 
 [survey]
-title = "Stirling-PDF Survey"
+title = "GreyStore PDF Survey"
 
 [swagger]
 clickHere = "click here"
@@ -13285,7 +13288,7 @@ favorites = "Favorites"
 heading = "All tools (fullscreen view)"
 noResults = "Try adjusting your search or toggle descriptions to find what you need."
 recommended = "Recommended"
-selfHostedOffline = "Requires your Stirling-PDF server (currently offline):"
+selfHostedOffline = "Requires your GreyStore PDF server (currently offline):"
 showDetails = "Show Details"
 unavailable = "Disabled by server administrator:"
 unavailableDependency = "Unavailable - required tool missing on server:"
@@ -13294,7 +13297,7 @@ unfavorite = "Remove from favorites"
 [toolPanel.modePrompt]
 chooseFullscreen = "Use fullscreen mode"
 chooseSidebar = "Use sidebar mode"
-description = "Preview both layouts and decide how you want to explore Stirling PDF tools."
+description = "Preview both layouts and decide how you want to explore GreyStore PDF tools."
 dismiss = "Maybe later"
 fullscreenDescription = "Browse every tool in a catalog that covers the workspace until you pick one."
 fullscreenTitle = "Fullscreen mode - (legacy)"
@@ -13361,7 +13364,7 @@ loadingDetailedInfo = "Loading detailed information..."
 migrationGuide = "Migration Guide"
 migrationGuides = "Migration Guides"
 migrationGuidesDesc = "Review important changes before updating."
-modalSubtitle = "A new version of Stirling PDF is ready to install."
+modalSubtitle = "A new version of GreyStore PDF is ready to install."
 modalTitle = "Update Available"
 notes = "Notes"
 releaseNotes = "Release Notes"
@@ -13387,7 +13390,7 @@ urgent = "Urgent"
 attentionBody = "Your admin needs to sign in to see more info. Please contact them immediately."
 attentionBodyAdmin = "Review the license requirements to keep this server compliant."
 attentionTitle = "This server needs admin attention"
-message = "Get the most out of Stirling PDF with 100 users, PDF text editing, and advanced features"
+message = "Get the most out of GreyStore PDF with 100 users, PDF text editing, and advanced features"
 seeInfo = "See info"
 title = "Upgrade to the Team plan"
 upgradeButton = "Upgrade Now"
@@ -13525,7 +13528,7 @@ authWeb = "Password"
 create = "Create account"
 createSubtitle = "Create a self-hosted account with a password or SSO."
 createTitle = "Create account"
-editorDesc = "Edit PDFs in the Stirling PDF Editor. Everyone gets this."
+editorDesc = "Edit PDFs in the GreyStore PDF Editor. Everyone gets this."
 email = "Email address"
 emailError = "Enter a valid email address"
 emailPlaceholder2 = "name@company.com"
@@ -13540,7 +13543,7 @@ processorDeferred = "Invite sent, but Processor access couldn't be granted yet -
 processorDesc = "The governance surface, run pipelines, agents, and the API."
 role = "Role"
 send2 = "Send invite"
-subtitle2 = "They'll get an email to join your Stirling workspace."
+subtitle2 = "They'll get an email to join your GreyStore PDF workspace."
 team = "Team"
 title = "Invite people"
 username = "Username"
@@ -13682,7 +13685,7 @@ downloads = "Downloads"
 entryLabel = "Signature Summary"
 filesEvaluated_one = "{{count}} file evaluated"
 filesEvaluated_other = "{{count}} files evaluated"
-footer = "Validated via Stirling PDF"
+footer = "Validated via GreyStore PDF"
 generatedAt = "Generated"
 noPdf = "PDF report will be available after a successful validation."
 page = "Page"
@@ -13890,7 +13893,7 @@ text = "Text"
 addFile = "Add file"
 count_one = "{{count}} file in this portfolio"
 count_other = "{{count}} files in this portfolio"
-import = "Import into Stirling"
+import = "Import into GreyStore PDF"
 importFailed = "This file could not be added to your workspace."
 memberUnavailable = "This file could not be read from the portfolio."
 preview = "Preview"

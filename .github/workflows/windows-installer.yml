@@ -19,6 +19,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  # Signing runs only once the WINDOWS_SIGNING_PFX_* secrets exist (packaging/windows/crear-certificado.ps1).
+  HAS_SIGNING_CERT: ${{ secrets.WINDOWS_SIGNING_PFX_BASE64 != '' }}
   DISABLE_ADDITIONAL_FEATURES: "true"
   STIRLING_FLAVOR: core
   # Keep in sync with REQUIRED_JAVA / JLINK_MODULES in .taskfiles/desktop.yml.
@@ -65,6 +67,11 @@ jobs:
           npx tsx scripts/setup-env.mts
           node scripts/generate-og-metadata.mjs
           npx vite build --mode core
+          # Only Spanish and English are selectable (settings.yml.template ui.languages, en-US is the
+          # fallback) and social-preview images are never shown in a local app.
+          find dist/locales -mindepth 1 -maxdepth 1 -type d ! -name es-ES ! -name en-US ! -name en-GB -exec rm -rf {} +
+          rm -rf dist/og_images
+          du -sh dist
 
       - name: Compilar programa (JAR)
         shell: bash
@@ -87,7 +94,6 @@ jobs:
           JAR=$(ls app/core/build/libs/*.jar | grep -v -- '-plain' | head -n 1)
           echo "JAR: $JAR"
           cp "$JAR" "$STAGE/GreyStorePDF.jar"
-          cp packaging/windows/GreyStorePDF.ps1 packaging/windows/Cerrar-GreyStorePDF.ps1 "$STAGE/"
           cp LICENSE "$STAGE/LICENSE.txt"
           "$JAVA_HOME/bin/jlink" \
             --add-modules "$JLINK_MODULES" \
@@ -97,6 +103,38 @@ jobs:
             --no-man-pages \
             --output "$STAGE/runtime"
           du -sh "$STAGE" "$STAGE/runtime" "$STAGE/GreyStorePDF.jar"
+
+      - name: Compilar lanzador (GreyStorePDF.exe)
+        shell: pwsh
+        run: |
+          $csc = Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
+          & $csc /nologo /target:winexe /optimize+ /platform:anycpu `
+            /win32icon:packaging\windows\GreyStorePDF.ico `
+            /reference:System.Windows.Forms.dll /reference:System.Drawing.dll `
+            /out:build\windows\app\GreyStorePDF.exe packaging\windows\launcher\GreyStorePDF.cs
+          if ($LASTEXITCODE -ne 0) { throw "csc falló ($LASTEXITCODE)" }
+
+      - name: Preparar firma digital
+        id: signing
+        if: env.HAS_SIGNING_CERT == 'true'
+        shell: pwsh
+        env:
+          PFX_BASE64: ${{ secrets.WINDOWS_SIGNING_PFX_BASE64 }}
+          PFX_PASSWORD: ${{ secrets.WINDOWS_SIGNING_PFX_PASSWORD }}
+        run: |
+          $pfx = Join-Path $env:RUNNER_TEMP 'signing.pfx'
+          [IO.File]::WriteAllBytes($pfx, [Convert]::FromBase64String($env:PFX_BASE64))
+          $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($pfx, $env:PFX_PASSWORD)
+          Write-Host "Firmando como: $($cert.Subject) (huella $($cert.Thumbprint), válido hasta $($cert.NotAfter))"
+          [IO.File]::WriteAllBytes('build\windows\app\GreyStoreChile.cer', $cert.Export('Cert'))
+          $signtool = Get-ChildItem 'C:\Program Files (x86)\Windows Kits\10\bin' -Recurse -Filter signtool.exe |
+            Where-Object { $_.FullName -match '\\x64\\' } | Sort-Object FullName -Descending | Select-Object -First 1
+          if (-not $signtool) { throw 'No se encontró signtool.exe' }
+          "pfx=$pfx" >> $env:GITHUB_OUTPUT
+          "signtool=$($signtool.FullName)" >> $env:GITHUB_OUTPUT
+          & $signtool.FullName sign /fd sha256 /f $pfx /p $env:PFX_PASSWORD /tr http://timestamp.digicert.com /td sha256 `
+            /d 'GreyStore PDF' /du https://greystorechile.cl build\windows\app\GreyStorePDF.exe
+          if ($LASTEXITCODE -ne 0) { throw "signtool falló ($LASTEXITCODE)" }
 
       - name: Prueba de arranque
         shell: pwsh
@@ -120,10 +158,21 @@ jobs:
           }
           if ($ok) {
             $index = Invoke-WebRequest -Uri 'http://127.0.0.1:8787/' -UseBasicParsing -TimeoutSec 10
-            if ($index.StatusCode -ne 200) { $ok = $false; Write-Host "La interfaz no respondió" }
+            if ($index.StatusCode -ne 200) { $ok = $false; Write-Host "::error title=Prueba de arranque::La interfaz no respondió" }
+          }
+          if ($ok) {
+            $config = Invoke-RestMethod -Uri 'http://127.0.0.1:8787/api/v1/config/app-config' -TimeoutSec 10
+            Write-Host "Nombre de la app: $($config.appNameNavbar)"
+            if ($config.appNameNavbar -ne 'GreyStore PDF') { $ok = $false; Write-Host '::error title=Prueba de arranque::La configuración por defecto no es la de GreyStore PDF' }
+            $endpoints = Invoke-RestMethod -Uri 'http://127.0.0.1:8787/api/v1/config/endpoints-enabled?endpoints=merge-pdfs,rotate-pdf,ocr-pdf,compress-pdf,add-password' -TimeoutSec 10
+            Write-Host "Herramientas: $($endpoints | ConvertTo-Json -Compress)"
+            if (-not $endpoints.'merge-pdfs' -or -not $endpoints.'rotate-pdf') { $ok = $false; Write-Host '::error title=Prueba de arranque::Faltan herramientas que deben estar activas' }
+            if ($endpoints.'ocr-pdf' -or $endpoints.'compress-pdf' -or $endpoints.'add-password') { $ok = $false; Write-Host '::error title=Prueba de arranque::Hay herramientas que deberían estar ocultas' }
           }
           if (-not $proc.HasExited) { Stop-Process -Id $proc.Id -Force }
           if (-not $ok) {
+            $outLog = ($data -replace '\\', '/') + '/out.log'
+            bash .github/scripts/report-error.sh "Prueba de arranque" $outLog
             Get-Content "$data\out.log" -Tail 200
             Get-Content "$data\err.log" -Tail 200
             throw 'La aplicación no arrancó correctamente'
@@ -138,16 +187,30 @@ jobs:
 
       - name: Crear instalador
         shell: pwsh
+        env:
+          PFX_PASSWORD: ${{ secrets.WINDOWS_SIGNING_PFX_PASSWORD }}
         run: |
           $iscc = (Get-Command iscc.exe -ErrorAction SilentlyContinue).Source
           if (-not $iscc) { $iscc = 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe' }
           $stage = Resolve-Path build/windows/app
           $out = Join-Path (Get-Location) 'build/windows/installer'
-          & $iscc "/DAppVersion=${{ steps.version.outputs.version }}" "/DStageDir=$stage" "/DOutputDir=$out" packaging/windows/GreyStorePDF.iss
+          $isccArgs = @("/DAppVersion=${{ steps.version.outputs.version }}", "/DStageDir=$stage", "/DOutputDir=$out")
+          if ('${{ steps.signing.outcome }}' -eq 'success') {
+            # Inno Setup expands $q to a quote and $f to the quoted file being signed.
+            $signCommand = '$q' + '${{ steps.signing.outputs.signtool }}' + '$q sign /fd sha256 /f $q' + '${{ steps.signing.outputs.pfx }}' +
+              '$q /p ' + $env:PFX_PASSWORD + ' /tr http://timestamp.digicert.com /td sha256 /d $qGreyStore PDF$q $f'
+            $isccArgs += @('/DSigned', "/Sgssign=$signCommand")
+          }
+          & $iscc @isccArgs packaging/windows/GreyStorePDF.iss
           if ($LASTEXITCODE -ne 0) { throw "Inno Setup falló ($LASTEXITCODE)" }
           Get-ChildItem $out
 
-      - uses: actions/upload-artifact@v4
+      - name: Borrar certificado temporal
+        if: always() && steps.signing.outputs.pfx != ''
+        shell: pwsh
+        run: Remove-Item -Force '${{ steps.signing.outputs.pfx }}' -ErrorAction SilentlyContinue
+
+      - uses: actions/upload-artifact@v5
         with:
           name: GreyStorePDF-Setup-${{ steps.version.outputs.version }}
           path: build/windows/installer/*.exe

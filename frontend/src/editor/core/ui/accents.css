@@ -85,19 +85,19 @@
   --_bd: var(--p-c-334155);
   --_tint: color-mix(in srgb, var(--p-c-94a3b8) 16%, transparent);
 }
-/* brand: Stirling red — a bespoke brand colour, not part of the token palette. */
+/* brand: GreyStore green — a bespoke brand colour, not part of the token palette. */
 .sui-acc-brand {
-  --_solid: var(--p-brand-red-650);
-  --_solid-hover: var(--p-brand-red-700);
+  --_solid: var(--p-gs-green-800);
+  --_solid-hover: var(--p-gs-green-950);
   --_on: #ffffff;
-  --_text: var(--p-brand-red-650);
-  --_bd: var(--p-brand-red-200);
-  --_tint: color-mix(in srgb, var(--p-brand-red-650) 9%, transparent);
+  --_text: var(--p-gs-green-800);
+  --_bd: var(--p-gs-green-200);
+  --_tint: color-mix(in srgb, var(--p-gs-green-800) 9%, transparent);
 }
 [data-theme="dark"] .sui-acc-brand {
-  --_text: var(--p-brand-red-300);
-  --_bd: var(--p-brand-red-900);
-  --_tint: color-mix(in srgb, var(--p-brand-red-300) 16%, transparent);
+  --_text: var(--p-gs-lime-300);
+  --_bd: var(--p-gs-green-600);
+  --_tint: color-mix(in srgb, var(--p-gs-lime-300) 16%, transparent);
 }
 /* ai: multi-hue gradient for AI features — no single-colour token. */
 .sui-acc-ai {

@@ -3,6 +3,10 @@ import { useTranslation } from "react-i18next";
 import { useCookieConsent } from "@editor/hooks/useCookieConsent";
 import { useFooterInfo } from "@editor/hooks/useFooterInfo";
 import { Button } from "@editor/ui/Button";
+import {
+  GREYSTORE_SUPPORT,
+  UPSTREAM_PROJECT_URL,
+} from "@editor/constants/greystore";
 
 interface FooterProps {
   privacyPolicy?: string;
@@ -37,13 +41,8 @@ export default function Footer({
 
   const { showCookiePreferences } = useCookieConsent();
 
-  // Default URLs
-  const defaultTermsUrl = "https://www.stirling.com/terms";
-  const defaultPrivacyUrl = "https://www.stirling.com/privacy";
-
-  // Use provided URLs or fall back to defaults
-  const finalTermsUrl = finalTermsAndConditions || defaultTermsUrl;
-  const finalPrivacyUrl = finalPrivacyPolicy || defaultPrivacyUrl;
+  const finalTermsUrl = finalTermsAndConditions;
+  const finalPrivacyUrl = finalPrivacyPolicy;
 
   // Helper to check if a value is valid (not null/undefined/empty string)
   const isValidLink = (link?: string) => link && link.trim().length > 0;
@@ -68,37 +67,60 @@ export default function Footer({
           fontSize: "0.75rem",
         }}
       >
+        <span className="px-3">
+          {t("footer.support", "Technical support: GreyStoreChile")}
+        </span>
         <a
           className="footer-link px-3"
           target="_blank"
           rel="noopener noreferrer"
-          href={finalPrivacyUrl}
+          href={GREYSTORE_SUPPORT.whatsappUrl}
         >
-          {t("legal.privacy", "Privacy Policy")}
+          {t("footer.whatsapp", "WhatsApp {{phone}}", {
+            phone: GREYSTORE_SUPPORT.phone,
+          })}
+        </a>
+        <a
+          className="footer-link px-3"
+          href={`mailto:${GREYSTORE_SUPPORT.email}`}
+        >
+          {GREYSTORE_SUPPORT.email}
         </a>
         <a
           className="footer-link px-3"
           target="_blank"
           rel="noopener noreferrer"
-          href={finalTermsUrl}
+          href={GREYSTORE_SUPPORT.websiteUrl}
         >
-          {t("legal.terms", "Terms and Conditions")}
+          {GREYSTORE_SUPPORT.websiteLabel}
         </a>
+        {isValidLink(finalPrivacyUrl) && (
+          <a
+            className="footer-link px-3"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={finalPrivacyUrl}
+          >
+            {t("legal.privacy", "Privacy Policy")}
+          </a>
+        )}
+        {isValidLink(finalTermsUrl) && (
+          <a
+            className="footer-link px-3"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={finalTermsUrl}
+          >
+            {t("legal.terms", "Terms and Conditions")}
+          </a>
+        )}
         <a
           className="footer-link px-3"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://discord.gg/Cn8pWhQRxZ"
+          href={UPSTREAM_PROJECT_URL}
         >
-          {t("footer.discord", "Discord")}
-        </a>
-        <a
-          className="footer-link px-3"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/Stirling-Tools/Stirling-PDF"
-        >
-          {t("footer.issues", "GitHub")}
+          {t("footer.basedOn", "Based on Stirling-PDF (MIT)")}
         </a>
         {isValidLink(finalAccessibilityStatement) && (
           <a

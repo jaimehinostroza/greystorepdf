@@ -1,16 +1,6 @@
-/* Morphing Stirling mark. At rest: the two-tone red brand parallelograms
-   (from the `d` attributes in the markup). When an ancestor marked
-   [data-brandmark-morph] is hovered / focused / open, each parallelogram is
-   transformed into one arm of a smaller, symmetric downward chevron in the
-   primary text colour.
-
-   The morph uses a CSS `transform` (not the `d` property) so it works in every
-   browser: both the logo shape and its target chevron arm are parallelograms,
-   and an affine matrix maps one exactly onto the other. The matrices below were
-   solved to send each path's 4 corners onto the chevron-arm corners:
-     arm A (left):  M13 27 L35.5 41 L35.5 53 L13 39 Z
-     arm B (right): M35.5 41 L58 27 L58 39 L35.5 53 Z
-   (mirror images — equal area + dimensions). */
+/* GreyStore PDF mark: brand-coloured at rest; when an ancestor marked
+   [data-brandmark-morph] is hovered / focused / open, it turns monochrome in
+   the primary text colour to show that the mark opens a menu. */
 .sui-brandmark {
   display: block;
   width: auto;
@@ -34,21 +24,19 @@
   fill: var(--c-brand-mark);
 }
 
-/* Morphed state — the two chevron arms, both in the primary text colour. */
+/* Menu-affordance state: page in the text colour, label band knocked out. */
 [data-brandmark-morph]:hover .sui-brandmark__a,
 [data-brandmark-morph]:focus-visible .sui-brandmark__a,
 [data-brandmark-morph].is-open .sui-brandmark__a {
-  fill: var(--c-text);
-  transform: matrix(0.483871, 0.584583, 0, 0.338028, 13, 13.8169);
+  fill: var(--c-bg-raised);
 }
 [data-brandmark-morph]:hover .sui-brandmark__b,
 [data-brandmark-morph]:focus-visible .sui-brandmark__b,
 [data-brandmark-morph].is-open .sui-brandmark__b {
   fill: var(--c-text);
-  transform: matrix(0.483871, -0.017568, 0, 0.338028, 23.887097, 26.886428);
 }
 
-/* One-shot "thinking" drift — the two parallelograms swap past each other and
+/* One-shot "thinking" drift — the page and its label band swap past each other and
    settle back. Same motion the chat FAB loops while the agent works, but this
    pair starts and ends at rest (translate 0, full opacity) so a single
    iteration can end without snapping. Callers apply it for one beat; see

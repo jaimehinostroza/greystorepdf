@@ -58,9 +58,9 @@ html[data-app-theme="light"] {
   --c-document-bg: var(--p-white);
   /* Highlight/flash (search hits, compare jump-to) — same in both themes. */
   --c-highlight: var(--p-flash-yellow);
-  /* Stirling brand red (auth CTAs) — a fixed brand colour, same in both themes. */
-  --c-brand: var(--p-brand-red);
-  --c-brand-hover: var(--p-brand-red-600);
+  /* GreyStore brand green (auth CTAs) — a fixed brand colour, same in both themes. */
+  --c-brand: var(--p-gs-green-800);
+  --c-brand-hover: var(--p-gs-green-950);
 
   --c-primary-tint: color-mix(in srgb, var(--c-primary) 14%, var(--c-surface));
   --c-primary-border: color-mix(
@@ -85,8 +85,8 @@ html[data-app-theme="light"] {
      marks, vendor colours, categorical avatar dots, static illustrations,
      and the multi-hue gradients on feature/upgrade/onboarding surfaces.
      Named here so components reference a --c-* token, never a raw --p-*. */
-  --c-brand-mark: var(--p-brand-red-650);
-  --c-brand-mark-soft: var(--p-brand-red-400); /* Stirling logo mark fill */
+  --c-brand-mark: var(--p-gs-green-800); /* GreyStore mark: page */
+  --c-brand-mark-soft: var(--p-gs-lime-500); /* GreyStore mark: label band */
   --c-accent-stripe: var(--p-periwinkle-500); /* Stripe "connect" CTA */
 
   /* Feature-accent hues (fixed) used as stops in multi-hue gradients. */
@@ -195,7 +195,7 @@ html[data-app-theme="midnight"] {
 
 /* ── Base accent — fixed default (blue buttons); [data-accent="default"] blocks at the end keep surfaces neutral. LIGHT base here, DARK base next. ── */
 html[data-app-theme="custom"] {
-  --c-primary: var(--p-blue-500);
+  --c-primary: var(--p-gs-green-800);
   /* Also the accent text colour (--_text), so 80% keeps 4.5:1 on the canvas. */
   --c-primary-hover: color-mix(in srgb, var(--c-primary) 80%, var(--p-black));
   --c-primary-subtle: color-mix(in srgb, var(--c-primary) 14%, transparent);
@@ -204,7 +204,7 @@ html[data-app-theme="custom"] {
   /* Accent used as TEXT: --c-primary and its 80% hover both land under
      4.5:1 on the accent-tinted surfaces they appear on (chips, links,
      outline buttons), so accent copy takes a deeper step of the hue. */
-  --c-accent-text: var(--p-blue-700);
+  --c-accent-text: var(--p-gs-green-800);
 
   /* Primary-tinted surfaces (light base). Neutralised by the default override. */
   --c-bg: color-mix(in srgb, var(--c-primary) 7%, var(--p-paper));
@@ -322,7 +322,10 @@ html[data-app-theme="custom"] {
 
 /* ── DARK — editor dark theme: neutral text/borders/icons + accent-tinted surfaces (default override opts out). After :root so it wins for dark. ── */
 html[data-app-theme="custom"][data-mantine-color-scheme="dark"] {
-  --c-accent-text: var(--p-blue-400);
+  /* Brand green at -800 is too dark to read on the dark canvas: fills step up
+     to -600 (still clears 4.5:1 under a white label) and accent copy turns lime. */
+  --c-primary: var(--p-gs-green-600);
+  --c-accent-text: var(--p-gs-lime-500);
   /* Shade 600 is the ramp's text-capable step (Mantine's shade 6 — link colour
      and the tuple's default text). The light theme reaches it by mixing toward
      black; on a dark ground it has to travel the other way to stay readable. */

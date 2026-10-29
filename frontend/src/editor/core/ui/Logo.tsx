@@ -6,7 +6,7 @@ import wordmarkDarkUrl from "@editor/assets/brand/branding-logo/wordmark-dark.sv
 import "@editor/components/shared/BrandMark.css";
 import "@editor/ui/Logo.css";
 
-/** iconOnly = mark; textOnly = "Stirling" wordmark; iconAndText = both. */
+/** iconOnly = mark; textOnly = "GreyStore PDF" wordmark; iconAndText = both. */
 export type LogoVariant = "iconOnly" | "iconAndText" | "textOnly";
 
 interface LogoProps {
@@ -38,7 +38,7 @@ export function Logo({
   gap = "0.5rem",
   className,
   style,
-  alt = "Stirling",
+  alt = "GreyStore PDF",
 }: LogoProps) {
   const showIcon = variant === "iconOnly" || variant === "iconAndText";
   const showText = variant === "textOnly" || variant === "iconAndText";
@@ -75,7 +75,7 @@ export function Logo({
             className="sui-logo__wordmark sui-logo__wordmark--light"
             src={wordmarkLightUrl}
             alt={alt}
-            width={58}
+            width={116}
             height={21}
             style={{ height: textHeight }}
           />
@@ -83,7 +83,7 @@ export function Logo({
             className="sui-logo__wordmark sui-logo__wordmark--dark"
             src={wordmarkDarkUrl}
             alt={alt}
-            width={58}
+            width={116}
             height={21}
             style={{ height: textHeight }}
           />

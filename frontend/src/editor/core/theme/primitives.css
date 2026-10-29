@@ -102,6 +102,15 @@
   --p-brand-red: #af3434;
   --p-brand-red-600: #9a2e2e;
 
+  /* GreyStoreChile brand: dark green #1C4E38 and lime #B3D335, plus derived steps.
+     -600 is the dark-theme fill that still carries a white label; -950 is hover. */
+  --p-gs-green-200: #b7cec2;
+  --p-gs-green-600: #2f7a55;
+  --p-gs-green-800: #1c4e38;
+  --p-gs-green-950: #133627;
+  --p-gs-lime-300: #cfe47a;
+  --p-gs-lime-500: #b3d335;
+
   /* Highlight flash (compare / show-JS / signature-report animations). */
   --p-flash-yellow: #ffeb3b;
 

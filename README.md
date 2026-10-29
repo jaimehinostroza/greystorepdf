@@ -27,6 +27,28 @@ en la versión "core" y no puede compilar esas partes.
 - **Editar:** texto, imágenes, sellos, marcas de agua, números de página, anotaciones, formularios, marcadores,
   metadatos, contraste, colores, aplanar.
 
+## Soporte
+
+GreyStoreChile — WhatsApp +56 9 5069 0280 — info@greystorechile.cl — [greystorechile.cl](https://greystorechile.cl)
+
 ## Compilar
 
-El instalador de Windows se genera automáticamente con GitHub Actions (pestaña **Actions** del repositorio).
+El instalador de Windows se genera automáticamente con GitHub Actions (pestaña **Actions** del repositorio)
+en cada cambio a `main`. Al publicar una etiqueta `vX.Y.Z` se crea además una versión en **Releases**.
+
+## Firma digital
+
+El instalador y el lanzador se firman con un certificado propio de GreyStoreChile (no emitido por una
+autoridad pública), pensado para equipos que GreyStoreChile instala y mantiene.
+
+1. En un PC propio, ejecutar una sola vez `packaging/windows/crear-certificado.ps1`.
+2. En GitHub, **Settings → Secrets and variables → Actions**, crear `WINDOWS_SIGNING_PFX_BASE64` y
+   `WINDOWS_SIGNING_PFX_PASSWORD` con los archivos que genera el script.
+3. Guardar `GreyStoreChile.pfx` y su contraseña en un lugar seguro y borrar `pfx-base64.txt`.
+
+Al instalar "para todos los usuarios" (como administrador), el instalador ofrece registrar el certificado
+como confiable en ese equipo. Sin los secretos, el instalador se genera igual pero sin firma.
+
+## Marca
+
+Los logos e íconos salen de `packaging/branding/generate.py` (colores #1C4E38 y #B3D335).
